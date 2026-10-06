@@ -12,8 +12,13 @@ const createMandetOrder = require("./service/createMandetOrderService");
 const app = express();
 const server = http.createServer(app);
 
+const path = require("path");
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Serve the frontend static files
+app.use(express.static(path.join(__dirname, "../front")));
 
 // Allow cross-origin
 app.use((req, res, next) => {
