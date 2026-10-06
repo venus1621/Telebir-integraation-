@@ -20,6 +20,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Serve the frontend static files
 app.use(express.static(path.join(__dirname, "../front")));
 
+// Redirect root to login page
+app.get("/", (req, res) => {
+  res.redirect("/login.html");
+});
+
 // Allow cross-origin
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
